@@ -9,4 +9,12 @@ class Converter extends CI_Controller {
 		$this->load->view('_converter', compact('query'));
 		$this->load->view('footer');
 	}
+
+	public function doConvert(){
+		$idr 	= $this->input->post('idr');
+		$kurs 	= $this->input->post('convert_to');
+		$result = $idr/$kurs;
+		$format = number_format($result, 2, '.', '');
+		echo json_encode(array('result'=>$format)); 
+	}
 }
